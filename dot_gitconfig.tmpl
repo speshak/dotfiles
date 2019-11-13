@@ -1,0 +1,72 @@
+[push]
+  default = simple
+[user]
+  name = Scott Peshak
+  email = {{ .email }}
+  signingkey = {{ .gpgkey }}
+
+[include]
+  path = ~/.gitaliases
+
+[diff "spaceman-diff"]
+  command = /usr/local/bin/spaceman-diff
+  indentHeuristic = on
+
+# Ansible Vault tools
+[diff "ansible-vault"]
+  textconv = ansible-vault view
+  # Do not cache the vault contents
+  cachetextconv = false
+
+[merge "ansible-vault"]
+  name = ansible-vault merge driver
+  driver = ~/bin/ansible-vault-merge -- %O %A %B %P
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  ui = true
+[core]
+  excludesfile = ~/.gitignore_global
+  editor = vim
+
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
+[help]
+  autocorrect = 1
+[pager]
+  diff = diff-so-fancy | less --tabs=4 -RFX
+  show = diff-so-fancy | less --tabs=4 -RFX
+[git-up "bundler"]
+  check = true
+[status]
+  submoduleSummary = true
+[fetch]
+  prune = true
+[rebase]
+  autoSquash = true
+
+# diff-so-fancy recommended defaults
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[color "diff"]
+  meta = 227
+  frag = magenta bold
+  commit = 227 bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+[color]
+  ui = true
+[gpg]
+  program = gpg
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+[commit]
+  gpgsign = true

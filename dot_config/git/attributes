@@ -1,0 +1,8 @@
+*.png  diff=spaceman-diff
+*.jpg  diff=spaceman-diff
+*.jpeg diff=spaceman-diff
+*.gif  diff=spaceman-diff
+vault.yml diff=ansible-vault merge=ansible-vault
+vault diff=ansible-vault merge=ansible-vault
+*.vault.yml diff=ansible-vault merge=ansible-vault
+*_vault.yml diff=ansible-vault merge=ansible-vault
