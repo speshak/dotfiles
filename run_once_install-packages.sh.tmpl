@@ -1,0 +1,46 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+brew tap 'homebrew/bundle'
+
+brew install \
+  ccat \
+  certigo \
+  cowsay \
+  diff-so-fancy \
+  gcal \
+  git \
+  git-flow \
+  gnupg \
+  grc \
+  gron \
+  htop \
+  httpie \
+  imagemagick \
+  ipcalc \
+  jp2a \
+  libgit2 \
+  moreutils \
+  nmap \
+  openssl \
+  readline \
+  postgresql \
+  proselint \
+  python3 \
+  pyenv-virtualenv \
+  ruby-build \
+  rbenv \
+  ssh-copy-id \
+  spaceman-diff \
+  shellcheck \
+  tig \
+  trash \
+  tree \
+  unrar \
+  vim \
+  watch \
+  wget \
+  youtube-dl \
+  xz \
+  zsh \
+  zsh-navigation-tools
+{{ end -}}
