@@ -3,6 +3,11 @@ set ignorecase nohlsearch number showcmd
 
 syntax on
 
+" :help fixdel
+if &term == "xterm-256color"
+  set t_kb=^?
+endif
+
 set sessionoptions-=options
 set encoding=utf-8
 set termencoding=utf-8
