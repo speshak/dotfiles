@@ -1,0 +1,111 @@
+snippet apt "Apt multipackages install" !b
+- name: ${1:install required packages}
+  apt:
+    pkg={{item}}
+    state=${2:installed}
+    ${3:update_cache=yes}
+  with_items:
+  - ${4:item}
+  $5
+endsnippet
+
+snippet dir "Create directory remotely" !b
+- name: Create ${1:directory name}
+  file:
+    state=directory
+    path=${2:path}
+endsnippet
+
+snippet template "Create a file from template" !b
+- name: ${1:task name}
+  template:
+    src=${2:foo.j2}
+    dest=${3:/etc/file.conf}
+    ${5:owner=${4:user}}
+    ${7:group=${6:wheel}}
+    ${9:mode=${8:0644}}
+    ${10:backup=yes}
+    ${11:validate='visudo -cf %s'}
+endsnippet
+
+snippet temp "Create a file from template (short)" !b
+- name: ${1:task name}
+  template:
+    src=${2:foo.j2}
+    dest=${3:/etc/file.conf}
+endsnippet
+
+snippet copy "Copy file remotely" !b
+- name: ${1:task name}
+  copy:
+    src=${2:foo.conf}
+    dest=${3:/etc/file.conf}
+    ${5:owner=${4:user}}
+    ${7:group=${6:wheel}}
+    ${9:mode=${8:0644}}
+    ${10:backup=yes}
+    ${11:validate='visudo -cf %s'}
+endsnippet
+
+snippet cp "Copy file remotely (short)" !b
+- name: ${1:task name}
+  copy:
+    src=${2:foo.j2}
+    dest=${3:/etc/file.conf}
+endsnippet
+
+snippet cmd "Remote command" !b
+- name: ${1:task name}
+  command:
+    ${2:ps aux}
+    ${4:chdir=${3:/etc/dir}}
+endsnippet
+
+snippet user "Create a user remotely" !b
+- name: ${1:task name}
+  user:
+    name=${2:www-data}
+    ${4:home=${3:/var/www}}
+    ${6:state=${5:absent}}
+endsnippet
+
+snippet file "Set file params" !b
+- name: ${1:task name}
+  file:
+    path=${2:/etc/foo.conf}
+    ${4:owner=${3:foo}}
+    ${6:group=${5:foo}}
+    ${8:mode=${7:0644}}
+    ${10:recurse=${9:yes}}
+endsnippet
+
+snippet service "Service for handler" !b
+- name: ${1:handler name}
+  service:
+    name=${2:name}
+    ${4:state=${3:restarted}}
+endsnippet
+
+snippet git "Git task" !b
+- name: ${1:task name}
+  git:
+    repo=${2:repo_url}
+    dest=${3:repo_dir}
+    ${5:version=${4:ref}}
+endsnippet
+
+snippet symlink "Create a symlink" !b
+- name: ${1:task name}
+  file:
+    state=link
+    src=${2:/vagrant}
+    dest=${3:/tmp}
+endsnippet
+
+snippet lineinfile "Create line in file" !b
+- name: ${1:task name}
+  lineinfile:
+    dest=${2:file}
+    line=${3:line}
+    regexp=
+endsnippet

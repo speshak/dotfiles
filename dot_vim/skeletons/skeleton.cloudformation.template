@@ -1,0 +1,13 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: ${3}
+
+Parameters:
+
+Conditions:
+
+
+Resources:
+
+
+# vim:ft=yaml.cloudformation
