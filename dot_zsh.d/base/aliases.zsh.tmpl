@@ -1,8 +1,6 @@
 alias reload!='. ~/.zshrc'
 
-alias cppwd="pwd | pbcopy"
 alias cal="gcal -q US_IA"
-alias cat="ccat"
 alias http="http --verify=no"
 alias weather="curl wttr.in"
 
@@ -12,6 +10,8 @@ alias -s md=vim
 alias crontab="VIM_CRONTAB=true crontab"
 
 {{ if eq .chezmoi.os "darwin" }}
+alias cat="ccat"
+alias cppwd="pwd | pbcopy"
 alias md5sum="md5 -r"
 
 clip ()
