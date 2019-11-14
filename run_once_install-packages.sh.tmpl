@@ -1,5 +1,5 @@
-{{ if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
+{{ if eq .chezmoi.os "darwin" -}}
 brew tap 'homebrew/bundle'
 
 brew install \
@@ -44,3 +44,7 @@ brew install \
   zsh \
   zsh-navigation-tools
 {{ end -}}
+
+
+# Install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
