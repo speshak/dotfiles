@@ -95,32 +95,32 @@ endfunction
 
 function! Toggle() "{{{
     " save values which we have to change temporarily:
-    let s:lineNo = line(".")
-    let s:columnNo = col(".")
+    let s:lineNo = line('.')
+    let s:columnNo = col('.')
 
     " Gather information needed later
-    let s:cline = getline(".")
+    let s:cline = getline('.')
     let s:charUnderCursor = strpart(s:cline, s:columnNo-1, 1)
 
     let s:toggleDone = 0
     " 1. Check if the single Character has to be toggled {{{
-    if (s:charUnderCursor == "+")
-        execute "normal r-"
+    if (s:charUnderCursor == '+')
+        execute 'normal r-'
         let s:toggleDone = 1
-    elseif (s:charUnderCursor == "-")
-        execute "normal r+"
+    elseif (s:charUnderCursor == '-')
+        execute 'normal r+'
         let s:toggleDone = 1
-    elseif (s:charUnderCursor == "<")
-        execute "normal r>"
+    elseif (s:charUnderCursor == '<')
+        execute 'normal r>'
         let s:toggleDone = 1
-    elseif (s:charUnderCursor == ">")
-        execute "normal r<"
+    elseif (s:charUnderCursor == '>')
+        execute 'normal r<'
         let s:toggleDone = 1
     endif " }}}
 
     " 2. Check if cursor is on an number. If so, search & toggle sign{{{
     if (s:toggleDone == 0)
-         if s:charUnderCursor =~ "\\d"
+         if s:charUnderCursor =~ '\\d'
             " is a number!
             " search for the sign of the number
             let s:colTemp = s:columnNo-1
@@ -128,31 +128,31 @@ function! Toggle() "{{{
             let s:spacePos = -1
             while ((s:colTemp >= 0) && (s:toggleDone == 0))
                 let s:cuc = strpart(s:cline, s:colTemp, 1)
-                if (s:cuc == "+")
-                    let s:ncline = s:Toggle_changeChar(s:cline, s:colTemp, "-")
+                if (s:cuc == '+')
+                    let s:ncline = s:Toggle_changeChar(s:cline, s:colTemp, '-')
                     call setline(s:lineNo, s:ncline)
                     let s:toggleDone = 1
-                elseif (s:cuc == "-")
-                    let s:ncline = s:Toggle_changeChar(s:cline, s:colTemp, "+")
+                elseif (s:cuc == '-')
+                    let s:ncline = s:Toggle_changeChar(s:cline, s:colTemp, '+')
                     call setline(s:lineNo, s:ncline)
                     let s:toggleDone = 1
-                elseif (s:cuc == " ")
+                elseif (s:cuc == ' ')
                     let s:foundSpace = 1
                     " Save spacePos only if there wasn't one already, so sign
                     " is directly before number if there are several spaces
                     if (s:spacePos == -1)
                       let s:spacePos = s:colTemp
                     endif
-                elseif (s:cuc !~ "\\s" && s:foundSpace == 1)
+                elseif (s:cuc !~ '\\s' && s:foundSpace == 1)
                     " space already found earlier, now there's something other
                     " than space
                     " -> the number didn't have a sign. insert - and keep a space
-                    let s:ncline = s:Toggle_changeChar(s:cline, s:spacePos, " -")
+                    let s:ncline = s:Toggle_changeChar(s:cline, s:spacePos, ' -')
                     call setline(s:lineNo, s:ncline)
                     let s:toggleDone = 1
-                elseif (s:cuc !~ "\\d" && s:cuc !~ "\\s")
+                elseif (s:cuc !~ '\\d' && s:cuc !~ '\\s')
                     " any non-digit, non-space character -> insert a - sign
-                    let s:ncline = s:Toggle_insertChar(s:cline, s:colTemp+1, "-")
+                    let s:ncline = s:Toggle_insertChar(s:cline, s:colTemp+1, '-')
                     call setline(s:lineNo, s:ncline)
                     let s:toggleDone = 1
                 endif
@@ -160,7 +160,7 @@ function! Toggle() "{{{
             endwhile
             if (s:toggleDone == 0)
                 " no sign found. insert at beginning of line:
-                let s:ncline = "-" . s:cline
+                let s:ncline = '-' . s:cline
                 call setline(s:lineNo, s:ncline)
                 let s:toggleDone = 1
             endif
@@ -171,28 +171,28 @@ function! Toggle() "{{{
     if s:toggleDone == 0
       let s:nextChar = strpart(s:cline, s:columnNo, 1)
       let s:prevChar = strpart(s:cline, s:columnNo-2, 1)
-      if s:charUnderCursor == "|"
-        if s:prevChar == "|"
-          execute "normal r&hr&"
+      if s:charUnderCursor == '|'
+        if s:prevChar == '|'
+          execute 'normal r&hr&'
           let s:toggleDone = 1
-        elseif s:nextChar == "|"
-          execute "normal r&lr&"
+        elseif s:nextChar == '|'
+          execute 'normal r&lr&'
           let s:toggleDone = 1
         else
-          execute "normal r&"
+          execute 'normal r&'
           let s:toggleDone = 1
         end
       end
 
-      if s:charUnderCursor == "&"
-        if s:prevChar == "&"
-          execute "normal r|hr|"
+      if s:charUnderCursor == '&'
+        if s:prevChar == '&'
+          execute 'normal r|hr|'
           let s:toggleDone = 1
-        elseif s:nextChar == "&"
-          execute "normal r|lr|"
+        elseif s:nextChar == '&'
+          execute 'normal r|lr|'
           let s:toggleDone = 1
         else
-          execute "normal r|"
+          execute 'normal r|'
           let s:toggleDone = 1
         end
       end
@@ -202,53 +202,53 @@ function! Toggle() "{{{
     if (s:toggleDone == 0)
         let s:wordUnderCursor_tmp = ''
 "
-        let s:wordUnderCursor = expand("<cword>")
-        if (s:wordUnderCursor ==? "true")
-            let s:wordUnderCursor_tmp = "false"
+        let s:wordUnderCursor = expand('<cword>')
+        if (s:wordUnderCursor ==? 'true')
+            let s:wordUnderCursor_tmp = 'false'
             let s:toggleDone = 1
-        elseif (s:wordUnderCursor ==? "false")
-            let s:wordUnderCursor_tmp = "true"
-            let s:toggleDone = 1
-
-        elseif (s:wordUnderCursor ==? "on")
-            let s:wordUnderCursor_tmp = "off"
-            let s:toggleDone = 1
-        elseif (s:wordUnderCursor ==? "off")
-            let s:wordUnderCursor_tmp = "on"
+        elseif (s:wordUnderCursor ==? 'false')
+            let s:wordUnderCursor_tmp = 'true'
             let s:toggleDone = 1
 
-        elseif (s:wordUnderCursor ==? "yes")
-            let s:wordUnderCursor_tmp = "no"
+        elseif (s:wordUnderCursor ==? 'on')
+            let s:wordUnderCursor_tmp = 'off'
             let s:toggleDone = 1
-        elseif (s:wordUnderCursor ==? "no")
-            let s:wordUnderCursor_tmp = "yes"
+        elseif (s:wordUnderCursor ==? 'off')
+            let s:wordUnderCursor_tmp = 'on'
             let s:toggleDone = 1
-        elseif (s:wordUnderCursor ==? "define")
-            let s:wordUnderCursor_tmp = "undef"
+
+        elseif (s:wordUnderCursor ==? 'yes')
+            let s:wordUnderCursor_tmp = 'no'
             let s:toggleDone = 1
-        elseif (s:wordUnderCursor ==? "undef")
-            let s:wordUnderCursor_tmp = "define"
+        elseif (s:wordUnderCursor ==? 'no')
+            let s:wordUnderCursor_tmp = 'yes'
+            let s:toggleDone = 1
+        elseif (s:wordUnderCursor ==? 'define')
+            let s:wordUnderCursor_tmp = 'undef'
+            let s:toggleDone = 1
+        elseif (s:wordUnderCursor ==? 'undef')
+            let s:wordUnderCursor_tmp = 'define'
             let s:toggleDone = 1
 
         " Special handling for git rebase magic words
-        elseif ( &filetype == "gitrebase")
-          if (s:wordUnderCursor ==? "pick")
-              let s:wordUnderCursor_tmp = "fixup"
+        elseif ( &filetype == 'gitrebase')
+          if (s:wordUnderCursor ==? 'pick')
+              let s:wordUnderCursor_tmp = 'fixup'
               let s:toggleDone = 1
-          elseif (s:wordUnderCursor ==? "fixup")
-              let s:wordUnderCursor_tmp = "edit"
+          elseif (s:wordUnderCursor ==? 'fixup')
+              let s:wordUnderCursor_tmp = 'edit'
               let s:toggleDone = 1
-          elseif (s:wordUnderCursor ==? "edit")
-              let s:wordUnderCursor_tmp = "squash"
+          elseif (s:wordUnderCursor ==? 'edit')
+              let s:wordUnderCursor_tmp = 'squash'
               let s:toggleDone = 1
-          elseif (s:wordUnderCursor ==? "squash")
-              let s:wordUnderCursor_tmp = "reword"
+          elseif (s:wordUnderCursor ==? 'squash')
+              let s:wordUnderCursor_tmp = 'reword'
               let s:toggleDone = 1
-          elseif (s:wordUnderCursor ==? "reword")
-              let s:wordUnderCursor_tmp = "drop"
+          elseif (s:wordUnderCursor ==? 'reword')
+              let s:wordUnderCursor_tmp = 'drop'
               let s:toggleDone = 1
-          elseif (s:wordUnderCursor ==? "drop")
-              let s:wordUnderCursor_tmp = "pick"
+          elseif (s:wordUnderCursor ==? 'drop')
+              let s:wordUnderCursor_tmp = 'pick'
               let s:toggleDone = 1
           endif
         endif
@@ -266,7 +266,7 @@ function! Toggle() "{{{
 
         " if wordUnderCursor is changed, set the new line
         if (s:toggleDone == 1)
-            execute "normal ciw" . s:wordUnderCursor
+            execute 'normal ciw' . s:wordUnderCursor
             let s:toggleDone = 1
         endif
 

@@ -1,6 +1,6 @@
 " Perl extras
 function! <SID>perlCompilerSetup()
-	let current_compiler = "perl"
+	let current_compiler = 'perl'
 	setlocal makeprg=perl\ -Wc\ %
 	setlocal errorformat=%m\ at\ %f\ line\ %l%.%#,\%-G%.%# " ignore any lines that didn't match one of the patterns above
 endfunction

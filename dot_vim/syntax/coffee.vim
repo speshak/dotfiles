@@ -104,7 +104,7 @@ syn match coffeeFloat /\i\@<![-+]\?\d*\.\@<!\.\d\+\%([eE][+-]\?\d\+\)\?/
 hi def link coffeeFloat Float
 
 " An error for reserved keywords
-if !exists("coffee_no_reserved_words_error")
+if !exists('coffee_no_reserved_words_error')
   syn match coffeeReservedError /\<\%(case\|default\|function\|var\|void\|with\|const\|let\|enum\|export\|import\|native\|__hasProp\|__extends\|__slice\|__bind\|__indexOf\)\>/
   \                             display
   hi def link coffeeReservedError Error
@@ -165,13 +165,13 @@ syn region coffeeHeredoc start=/'''/ end=/'''/ contains=@coffeeBasicString
 hi def link coffeeHeredoc String
 
 " An error for trailing whitespace, as long as the line isn't just whitespace
-if !exists("coffee_no_trailing_space_error")
+if !exists('coffee_no_trailing_space_error')
   syn match coffeeSpaceError /\S\@<=\s\+$/ display
   hi def link coffeeSpaceError Error
 endif
 
 " An error for trailing semicolons, for help transitioning from JavaScript
-if !exists("coffee_no_trailing_semicolon_error")
+if !exists('coffee_no_trailing_semicolon_error')
   syn match coffeeSemicolonError /;$/ display
   hi def link coffeeSemicolonError Error
 endif

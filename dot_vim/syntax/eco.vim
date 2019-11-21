@@ -3,8 +3,8 @@
 " Maintainer:		Jay Adkisson
 " Mostly stolen from eruby.vim
 
-if !exists("g:eco_default_subtype")
-  let g:eco_default_subtype = "html"
+if !exists('g:eco_default_subtype')
+  let g:eco_default_subtype = 'html'
 endif
 
 if !exists("b:eco_subtype")
@@ -35,8 +35,8 @@ if !exists("b:eco_subtype")
   endif
 endif
 
-if exists("b:eco_subtype") && b:eco_subtype != '' && b:eco_subtype != 'eco'
-  exec "runtime! syntax/".b:eco_subtype.".vim"
+if exists('b:eco_subtype') && b:eco_subtype != '' && b:eco_subtype != 'eco'
+  exec 'runtime! syntax/'.b:eco_subtype.'.vim'
   syn include @coffeeTop syntax/coffee.vim
 endif
 
