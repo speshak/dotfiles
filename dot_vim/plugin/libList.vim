@@ -245,5 +245,3 @@ function QuickSortList( array, beg, end )
 	endif
 	return array
 endfunction
-
-

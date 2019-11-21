@@ -1,7 +1,7 @@
                       IMAP -- A fluid replacement for :imap
                                    *imaps.txt*
                  Srinath Avadhanula <srinath AT fastmail DOT fm>
-                                        
+
 
 
                                     Abstract
@@ -69,7 +69,7 @@ you type in this sequence of letters, the following text is inserted: >
     \begin{itemize}
         \item *
     \end{itemize}<++>
-       
+
 where * shows the cursor position. The cursor position after inserting the text
 is decided by the position of the first "place-holder". Place holders are
 special characters which decide cursor placement and movement. In the example
@@ -89,7 +89,7 @@ place holders.
 Example Two: You can use the <C-r> command to insert dynamic elements such as
 dates. >
     call IMAP ('date`', "\<c-r>=strftime('%b %d %Y')\<cr>", '')
-       
+
 
 
 With this mapping, typing date` will insert the present date into the file.

@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # Enable RVM
 if [ -e "$HOME/.rvm" ]; then
   export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

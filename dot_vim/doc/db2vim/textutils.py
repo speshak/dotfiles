@@ -146,13 +146,13 @@ def FormatTable(tableText, ROW_SPACE=2, COL_SPACE = 3, \
     # array because the keys are integers.
 
     if widths is None:
-        widths = {}      
+        widths = {}
         for row in tableText:
             cellwidths = map(TextWidth, row)
             for i in range(len(cellwidths)):
                 # Using: dictionary.get(key, default)
                 widths[i] = max(cellwidths[i], widths.get(i, -1))
-    
+
     # Truncate each of the maximum lengths to the maximum allowed.
     for i in range(0, len(widths)):
         widths[i] = min(widths[i], COL_WIDTH)
@@ -165,7 +165,7 @@ def FormatTable(tableText, ROW_SPACE=2, COL_SPACE = 3, \
                                           [COL_WIDTH]*len(row)))
     else:
         formattedTable = tableText
-    
+
     retTableText = ""
     for row in formattedTable:
         rowtext = row[0]
@@ -209,12 +209,12 @@ def VertCatString(string1, width1, string2):
     for i in range(0, max(len(lines1),  len(lines2))):
         if i >= len(lines1):
             lines1.append(" "*width1)
-        
+
         lines1[i] = lines1[i] + " "*(width1 - len(lines1[i]))
 
         if i >= len(lines2):
             lines2.append("")
-        
+
         retlines.append(lines1[i] + lines2[i])
 
     return string.join(retlines, "\n")

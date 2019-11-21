@@ -120,7 +120,7 @@ function! s:CoffeeCompile(startline, endline, args)
   let watch = a:args =~ '\<watch\>'
   let unwatch = a:args =~ '\<unwatch\>'
   let size = str2nr(matchstr(a:args, '\<\d\+\>'))
-   
+
   " Determine default split direction.
   if exists("g:coffee_compile_vert")
     let vert = 1

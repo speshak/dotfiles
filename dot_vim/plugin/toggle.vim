@@ -11,7 +11,7 @@
 " value under cursor in insert-mode. In normal/visual mode,
 " the + key toggles the value under the cursor.
 " Currently known values are:
-" 
+"
 "  true     <->     false
 "  on       <->     off
 "  yes      <->     no
@@ -21,13 +21,13 @@
 "  ||       <->     &&
 "  &&       <->     ||
 "
-"  If cursor is positioned on a number, the function looks for a + 
+"  If cursor is positioned on a number, the function looks for a +
 "  or - sign in front of that number and toggels it. If the number
 "  doesn't have a sign, one is inserted (- of course).
 "
 "  On unknown values, nothing happens.
 "
-" Thanks: 
+" Thanks:
 " - Christoph Behle, who inspired me to write this
 " - Jan Christoph Ebersbach, for the 'keep case' patch
 " - the Vim Documentation ;)
@@ -42,7 +42,7 @@
 "   - case insensitive toggling, keep case
 "   - Bugfix for && and ||
 " v 0.4, 14 September 2010
-"   - default mapping uses + in normal and visual mode instead 
+"   - default mapping uses + in normal and visual mode instead
 "     of <C-T>
 "   - delete unused variables to save memory
 "   - changed some function calls with easier ones (as I found
@@ -140,7 +140,7 @@ function! Toggle() "{{{
                     let s:foundSpace = 1
                     " Save spacePos only if there wasn't one already, so sign
                     " is directly before number if there are several spaces
-                    if (s:spacePos == -1) 
+                    if (s:spacePos == -1)
                       let s:spacePos = s:colTemp
                     endif
                 elseif (s:cuc !~ "\\s" && s:foundSpace == 1)
@@ -166,7 +166,7 @@ function! Toggle() "{{{
             endif
         endif " is a number under the cursor?
     endif " toggleDone?}}}
-    
+
     " 3. Check if cursor is on one-or two-character symbol"{{{
     if s:toggleDone == 0
       let s:nextChar = strpart(s:cline, s:columnNo, 1)
@@ -201,7 +201,7 @@ function! Toggle() "{{{
     " 4. Check if complete word can be toggled {{{
     if (s:toggleDone == 0)
         let s:wordUnderCursor_tmp = ''
-"                 
+"
         let s:wordUnderCursor = expand("<cword>")
         if (s:wordUnderCursor ==? "true")
             let s:wordUnderCursor_tmp = "false"
@@ -274,7 +274,7 @@ function! Toggle() "{{{
 
     if s:toggleDone == 0
       echohl WarningMsg
-      echo "Can't toggle word under cursor, word is not in list." 
+      echo "Can't toggle word under cursor, word is not in list."
       echohl None
     endif
 
@@ -284,7 +284,7 @@ function! Toggle() "{{{
     unlet! s:cline
     unlet! s:foundSpace
     unlet! s:cuc "}}}
-    
+
     "restore saved values
     call cursor(s:lineNo,s:columnNo)
     unlet s:lineNo

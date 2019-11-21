@@ -16,7 +16,7 @@ SHORT OPTIONS
 
 LONG OPTIONS
 
---prefix=<prefix> 
+--prefix=<prefix>
     This is a string like "ls_" which will be prepended to the section
     numbers. Default to 'ls_' if unsupplied.
 """
@@ -41,7 +41,7 @@ COL_SPACE = 2
 #
 # TOC_HASH['section 1.1 label'] = 'ls_1_1'
 #
-# LEVEL_HASH['section 1.1 label'] = 1 
+# LEVEL_HASH['section 1.1 label'] = 1
 #       (top level article has level 0)
 #
 # TITLE_HASH['section 1.1 label'] = 'Title of section 1.1'
@@ -122,7 +122,7 @@ def makeAnchorHash(rootElement):
             print >> STDERR, "Warning: anchor [%s] multiply defined" % anchor.getAttribute('id')
 
         ANCHOR_HASH[anchor.getAttribute('id')] = TOC_PREFIX + 'a_' + encodeTo52(NUM_ANCHORS[0] + 52)
-    
+
 # }}}
 # makeURLHash(rootElement) {{{
 def makeURLHash(rootElement):
@@ -290,7 +290,7 @@ def handleArticleInfo(articleinfo, width):
         if author.getElementsByTagName('email'):
             email = GetTextFromElementNode(author, 'email')[0]
         authorText = authorText + firstname + ' ' + surname + ' <' + email + '>\n'
-        
+
 
     abstractText = ''
     abstract = articleinfo.getChildrenByTagName('abstract')
@@ -650,7 +650,7 @@ handlerMaps = {
     'emphasis': handleEmphasis,
     'indexterm': handleIndexTerm
 }
-inlineTags = {'tag':1, 'literal':1, 'link':1, 
+inlineTags = {'tag':1, 'literal':1, 'link':1,
     'ulink':1, 'citetitle':1, 'indexterm':1,
     'emphasis':1, 'filename':1 }
 # }}}
@@ -679,7 +679,7 @@ def replaceComment(matchobj):
 	lastspace = initspace
 
     return '\n' + initspace + firstsent + ' >\n' + code + '\n' + lastspace
-    
+
 # }}}
 # main function {{{
 if __name__ == "__main__":
@@ -712,7 +712,7 @@ if __name__ == "__main__":
     except:
         print "Error opening xml file"
 
-    dom = xml.dom.minidom.parse(fp) 
+    dom = xml.dom.minidom.parse(fp)
 
     modeline = r'''
 ================================================================================

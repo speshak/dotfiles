@@ -19,4 +19,3 @@ au FileType perl :call s:perlKWCompleteSetup()
 au FileType perl map ,t <Esc>:!prove -vl %<CR>
 
 au FileType perl runtime! ftplugin/perl_doc.vim
-

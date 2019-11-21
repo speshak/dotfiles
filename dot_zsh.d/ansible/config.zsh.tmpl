@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+export ANSIBLE_NOCOWS=1
+
+{{- if eq .environment "work" }}
+export ANSIBLE_VAULT_PASSWORD_FILE=~/.mdp-helpers/bin/lpass-vault
+{{- end }}
+
+# Fix for Python sigabort errors on macos 10.13
+export no_proxy='*'
