@@ -26,7 +26,7 @@ filetype on
 set printoptions=paper:Letter
 
 " Spelling (didn't exist before vim 7.0)
-if version >= 700
+if v:version >= 700
   set spelllang=en
   setlocal spellfile=~/.vim-spellfile.en.add
   map sp <Esc>:set spell<CR>
@@ -42,11 +42,11 @@ hi IndentGuidesEven ctermbg=darkgrey
 
 " Skeletons!
 let skeletons#autoRegister = 1
-let skeletons#skeletonsDir = "~/.vim/skeletons"
+let skeletons#skeletonsDir = '~/.vim/skeletons'
 
 
 " Undo Config
-if has("persistent_undo")
+if has('persistent_undo')
     set undodir=~/.undodir/
     set undofile
 endif
@@ -56,7 +56,7 @@ endif
 runtime! ftplugin/man.vim
 
 " Set backup options if we're editing a crontab
-if $VIM_CRONTAB == "true"
+if $VIM_CRONTAB == 'true'
     set nobackup
     set nowritebackup
 endif
