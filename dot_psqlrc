@@ -1,0 +1,17 @@
+\set QUIET 1
+\set ON_ERROR_ROLLBACK interactive
+
+-- Change the display of null values
+\pset null '(null)'
+
+-- Show how long each query takes to execute
+\timing
+
+-- Use best available output format
+\x auto
+\set VERBOSITY verbose
+\set HISTFILE ~/.psql_history- :USER - :HOST - :PORT - :DBNAME
+\set HISTCONTROL ignoredups
+\set COMP_KEYWORD_CASE upper
+
+\unset QUIET
