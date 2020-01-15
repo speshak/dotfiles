@@ -14,7 +14,7 @@ fi
 source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 
 # fzf Config
-export FZF_CTRL_T_OPTS="--preview 'ccat | head -500'"
+export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always {} | head -500'"
 export FZF_CTRL_T_COMMAND="find . -type f -not -path '*.git/*'"
 
 {{ end }}
