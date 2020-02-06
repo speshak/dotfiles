@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+if [ -d /home/linuxbrew/.linuxbrew/bin ]
+then
+  export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
+  eval $($(brew --prefix)/bin/brew shellenv)
+fi
