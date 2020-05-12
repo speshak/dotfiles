@@ -78,4 +78,9 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+if type pyenv > /dev/null
+then
+  eval "$(pyenv init -)"
+fi
+
 # vim:ft=zsh
