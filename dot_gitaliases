@@ -10,3 +10,4 @@
   staash = stash --include-untracked
   staaash = stash --all
   ane = commit --amend --no-edit
+  openconflict = "!f() { hub browse -- commit/$(git rev-parse REBASE_HEAD); }; f"
