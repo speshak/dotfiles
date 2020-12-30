@@ -1,0 +1,13 @@
+{{- if eq .environment "home" }}
+# Shell function for uploading files to a FlashAir SD card.
+upload_flashair() {
+  file="$1"
+
+  if [ -z "${file}" ]; then
+    echo "No filename provided"
+  else
+    curl -s --show-error --form "file=@${file}" https://flashair.peshak.net/upload.cgi > /dev/null
+  fi
+}
+{{- end }}
+# vim: ft=zsh
