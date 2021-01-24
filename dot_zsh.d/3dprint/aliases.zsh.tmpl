@@ -1,13 +1,23 @@
 {{- if eq .environment "home" }}
+FLASHAIR_HOST=https://flashair.peshak.net
+
 # Shell function for uploading files to a FlashAir SD card.
-upload_flashair() {
+flashair_upload() {
   file="$1"
 
   if [ -z "${file}" ]; then
     echo "No filename provided"
   else
-    curl -s --show-error --form "file=@${file}" https://flashair.peshak.net/upload.cgi > /dev/null
+    curl -s --show-error --form "file=@${file}" ${FLASHAIR_HOST}/upload.cgi > /dev/null
   fi
 }
+
+# Delete file from FlashAir SD card
+flashair_delete() {
+  for file in "$@"; do
+    curl -s --show-error "${FLASHAIR_HOST}/upload.cgi?DEL=${file}"
+  done
+}
+
 {{- end }}
 # vim: ft=zsh
