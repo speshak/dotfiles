@@ -5,7 +5,7 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("patch-8.1.1564")
+if has('patch-8.1.1564')
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
 else
@@ -65,8 +65,10 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup cocHighlight
+  " Highlight the symbol and its references when holding the cursor.
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)

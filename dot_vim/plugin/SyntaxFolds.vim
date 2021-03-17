@@ -170,9 +170,9 @@ function! MakeSyntaxFolds(force, ...)
 
 	if a:0 == 0
 		exe r
-		exe "normal! ".c."|"
+		exe 'normal! '.c.'|'
 		if foldlevel(r) > 1
-			exe "normal! ".(foldlevel(r) - 1)."zo"
+			exe 'normal! '.(foldlevel(r) - 1).'zo'
 		end
 		let b:doneFolding = 0
 	end

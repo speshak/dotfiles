@@ -56,7 +56,7 @@ endif
 runtime! ftplugin/man.vim
 
 " Set backup options if we're editing a crontab
-if $VIM_CRONTAB == 'true'
+if $VIM_CRONTAB ==? 'true'
     set nobackup
     set nowritebackup
 endif

@@ -62,7 +62,7 @@
 " - First version
 
 " Has this already been loaded ?
-if exists("loaded_libList")
+if exists('loaded_libList')
        finish
 endif
 let loaded_libList=1
@@ -71,7 +71,7 @@ let loaded_libList=1
 " Separator:
 " You may change the separator character et any time.
 "**
-let g:listSep = ","
+let g:listSep = ','
 
 "**
 "AddListItem:
@@ -87,12 +87,12 @@ let g:listSep = ","
 "**
 function AddListItem( array, newItem, index )
 	if a:index == 0
-		if a:array == ""
+		if a:array == ''
 			return a:newItem
 		endif
 		return a:newItem . g:listSep . a:array
 	endif
-	return substitute( a:array, '\(\%(^\|' . g:listSep . '\)[^' . g:listSep . ']\+\)\{' . a:index . '\}', '\0' . g:listSep . a:newItem , "" )
+	return substitute( a:array, '\(\%(^\|' . g:listSep . '\)[^' . g:listSep . ']\+\)\{' . a:index . '\}', '\0' . g:listSep . a:newItem , '' )
 endfunction
 
 "**
@@ -109,7 +109,7 @@ function GetListItem( array, index )
 	if a:index == 0
 		return matchstr( a:array, '^[^' . g:listSep . ']\+' )
 	else
-		return matchstr( a:array, "[^" . g:listSep . "]\\+", matchend( a:array, '\(\%(^\|' . g:listSep . '\)[^' . g:listSep . ']\+\)\{' . a:index . '\}' . g:listSep ) )
+		return matchstr( a:array, '[^' . g:listSep . ']\+', matchend( a:array, '\(\%(^\|' . g:listSep . '\)[^' . g:listSep . ']\+\)\{' . a:index . '\}' . g:listSep ) )
 	endif
 endfunction
 
@@ -141,9 +141,9 @@ endfunction
 "**
 function ReplaceListItem( array, index, item )
 	if a:index == 0
-		return substitute( a:array, '^[^' .g:listSep. ']\+', a:item, "" )
+		return substitute( a:array, '^[^' .g:listSep. ']\+', a:item, '' )
 	else
-		return substitute( a:array, '\(\%(\%(^\|' . g:listSep . '\)[^' . g:listSep . ']\+\)\{' . a:index . '\}\)' . g:listSep . '[^' . g:listSep . ']\+', '\1' . g:listSep . a:item , "" )
+		return substitute( a:array, '\(\%(\%(^\|' . g:listSep . '\)[^' . g:listSep . ']\+\)\{' . a:index . '\}\)' . g:listSep . '[^' . g:listSep . ']\+', '\1' . g:listSep . a:item , '' )
 	endif
 endfunction
 
@@ -159,9 +159,9 @@ endfunction
 "**
 function RemoveListItem( array, index )
 	if a:index == 0
-		return substitute( a:array, '^[^' .g:listSep. ']\+\(' . g:listSep . '\|$\)', "", "" )
+		return substitute( a:array, '^[^' .g:listSep. ']\+\(' . g:listSep . '\|$\)', '', '' )
 	else
-		return substitute( a:array, '\(\%(\%(^\|' . g:listSep . '\)[^' . g:listSep . ']\+\)\{' . a:index . '\}\)' . g:listSep . '[^' . g:listSep . ']\+', '\1', "" )
+		return substitute( a:array, '\(\%(\%(^\|' . g:listSep . '\)[^' . g:listSep . ']\+\)\{' . a:index . '\}\)' . g:listSep . '[^' . g:listSep . ']\+', '\1', '' )
 	endif
 endfunction
 
@@ -193,7 +193,7 @@ endfunction
 "Index of last item is GetListCount(array)-1.
 "**
 function GetListCount( array )
-	if a:array == "" | return 0 | endif
+	if a:array == '' | return 0 | endif
 	let pos = 0
 	let cnt = 0
 	while pos != -1

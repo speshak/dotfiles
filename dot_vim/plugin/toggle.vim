@@ -120,7 +120,7 @@ function! Toggle() "{{{
 
     " 2. Check if cursor is on an number. If so, search & toggle sign{{{
     if (s:toggleDone == 0)
-         if s:charUnderCursor =~ '\\d'
+         if s:charUnderCursor =~? '\\d'
             " is a number!
             " search for the sign of the number
             let s:colTemp = s:columnNo-1
@@ -143,14 +143,14 @@ function! Toggle() "{{{
                     if (s:spacePos == -1)
                       let s:spacePos = s:colTemp
                     endif
-                elseif (s:cuc !~ '\\s' && s:foundSpace == 1)
+                elseif (s:cuc !~? '\\s' && s:foundSpace == 1)
                     " space already found earlier, now there's something other
                     " than space
                     " -> the number didn't have a sign. insert - and keep a space
                     let s:ncline = s:Toggle_changeChar(s:cline, s:spacePos, ' -')
                     call setline(s:lineNo, s:ncline)
                     let s:toggleDone = 1
-                elseif (s:cuc !~ '\\d' && s:cuc !~ '\\s')
+                elseif (s:cuc !~? '\\d' && s:cuc !~? '\\s')
                     " any non-digit, non-space character -> insert a - sign
                     let s:ncline = s:Toggle_insertChar(s:cline, s:colTemp+1, '-')
                     call setline(s:lineNo, s:ncline)
@@ -231,7 +231,7 @@ function! Toggle() "{{{
             let s:toggleDone = 1
 
         " Special handling for git rebase magic words
-        elseif ( &filetype == 'gitrebase')
+        elseif ( &filetype ==? 'gitrebase')
           if (s:wordUnderCursor ==? 'pick')
               let s:wordUnderCursor_tmp = 'fixup'
               let s:toggleDone = 1
@@ -255,9 +255,9 @@ function! Toggle() "{{{
 
          " preserve case (provided by Jan Christoph Ebersbach)
          if s:toggleDone
-             if strpart (s:wordUnderCursor, 0) =~ '^\u*$'
+             if strpart (s:wordUnderCursor, 0) =~? '^\u*$'
                  let s:wordUnderCursor = toupper (s:wordUnderCursor_tmp)
-             elseif strpart (s:wordUnderCursor, 0, 1) =~ '^\u$'
+             elseif strpart (s:wordUnderCursor, 0, 1) =~? '^\u$'
                  let s:wordUnderCursor = toupper (strpart (s:wordUnderCursor_tmp, 0, 1)).strpart (s:wordUnderCursor_tmp, 1)
              else
                  let s:wordUnderCursor = s:wordUnderCursor_tmp
