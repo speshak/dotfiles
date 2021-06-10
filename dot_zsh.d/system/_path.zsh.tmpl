@@ -4,3 +4,8 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 {{ if eq .chezmoi.os "darwin" -}}
 export PATH="$PATH:$HOME/Library/Python/2.7/bin/"
 {{ end }}
+
+# Get the npm bin on the path
+if command -v npm &> /dev/null; then
+  export PATH=$PATH:$(npm config get prefix)/bin
+fi
