@@ -1,21 +1,21 @@
 ---
 repos:
   - repo: git://github.com/pre-commit/pre-commit-hooks
-    rev: master
+    rev: v4.0.1
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: check-merge-conflict
   - repo: git://github.com/adrienverge/yamllint
-    rev: master
+    rev: v1.26.3
     hooks:
       - id: yamllint
   - repo: git://github.com/detailyang/pre-commit-shell
-    rev: v1.0.6
+    rev: 1.0.5
     hooks:
       - id: shell-lint
         exclude: "\\.zsh$"
   - repo: git://github.com/Kuniwak/vint
-    rev: master
+    rev: v0.4a3
     hooks:
       - id: vint
