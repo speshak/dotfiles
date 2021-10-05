@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -e
 {{ if eq .chezmoi.os "darwin" -}}
 brew tap 'homebrew/bundle'
 
@@ -10,6 +10,7 @@ brew install \
   diff-so-fancy \
   fzf \
   gcal \
+  gh \
   git \
   git-flow \
   gnupg \
@@ -17,37 +18,42 @@ brew install \
   gron \
   htop \
   httpie \
-  hub \
   imagemagick \
   ipcalc \
   jp2a \
   libgit2 \
   moreutils \
   nmap \
+  node \
   openssl \
-  readline \
+  pinentry-mac \
   postgresql \
+  pre-commit \
   proselint \
-  python3 \
   pyenv-virtualenv \
-  ruby-build \
+  python3 \
   rbenv \
-  ssh-copy-id \
-  spaceman-diff \
+  readline \
+  ruby-build \
   shellcheck \
+  spaceman-diff \
+  ssh-copy-id \
   tig \
+  tmux \
   trash \
   tree \
-  unrar \
   vim \
   watch \
   wget \
-  youtube-dl \
   xz \
+  yarn \
+  youtube-dl \
   zsh \
   zsh-navigation-tools
 {{ end -}}
 
 
 # Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" || true
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended || true
+
+# vim:ft=jinja2.sh
