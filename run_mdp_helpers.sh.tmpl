@@ -4,6 +4,6 @@
 if [ -e ~/.mdp-helpers ]; then
   git -C ~/.mdp-helpers pull --rebase --autostash
 else
-  git clone ssh://git@github.com:MeredithCorp/DigOps-Shell-Helpers ~/.mdp-helpers
+  git clone git@github.com:MeredithCorp/DigOps-Shell-Helpers ~/.mdp-helpers
 fi
 {{- end }}
