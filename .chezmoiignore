@@ -1,4 +1,5 @@
 README.md
 LICENSE.md
 CONTRIBUTING.md
+fonts/*
 .pre-commit-config.yaml

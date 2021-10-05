@@ -1,0 +1,6 @@
+#!/bin/bash -e
+{{ if eq .chezmoi.os "darwin" -}}
+cp $(chezmoi source-path)/fonts/* /Library/Fonts
+{{ end -}}
+
+# vim:ft=jinja2.sh
