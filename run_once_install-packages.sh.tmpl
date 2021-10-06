@@ -1,4 +1,5 @@
 #!/bin/bash -e
+# shellcheck disable=SC1054,SC1083
 {{ if eq .chezmoi.os "darwin" -}}
 brew tap 'homebrew/bundle'
 
@@ -6,6 +7,8 @@ brew install \
   bat \
   ccat \
   certigo \
+  cfn-flip \
+  cfn-lint \
   cowsay \
   diff-so-fancy \
   fzf \
@@ -50,6 +53,7 @@ brew install \
   youtube-dl \
   zsh \
   zsh-navigation-tools
+# shellcheck disable=SC1009,SC1072,SC1073,SC1056
 {{ end -}}
 
 
