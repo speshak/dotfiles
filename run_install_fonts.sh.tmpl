@@ -1,6 +1,15 @@
 #!/bin/bash -e
+# shellcheck disable=SC1054,SC1083
 {{ if eq .chezmoi.os "darwin" -}}
-cp $(chezmoi source-path)/fonts/* /Library/Fonts
+
+sudo install \
+  -m 0444 \
+  -o root \
+  -g admin \
+  $(chezmoi source-path)/fonts/* \
+  /Library/Fonts
+
+# shellcheck disable=SC1009,SC1072,SC1073,SC1056
 {{ end -}}
 
-# vim:ft=jinja2.sh
+# vim:ft=sh.jinja2
