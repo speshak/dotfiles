@@ -83,4 +83,10 @@ then
   eval "$(pyenv init -)"
 fi
 
+{{ if eq .chezmoi.os "darwin" -}}
+if [[  -S ~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh ]]; then
+  export SSH_AUTH_SOCK=~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+fi
+{{ end }}
+
 # vim:ft=zsh
