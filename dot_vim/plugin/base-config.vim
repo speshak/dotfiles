@@ -72,4 +72,7 @@ function CopyMode()
   :GitGutterToggle
 endfunction
 
+" Use , as <Leader> instead of \
+let mapleader = ","
+
 map cp <Esc>:call CopyMode()<CR>
