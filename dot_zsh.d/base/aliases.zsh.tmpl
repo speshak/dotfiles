@@ -20,3 +20,11 @@ clip ()
 }
 
 {{ end }}
+
+# Make vim be nvim if it is present
+if type "nvim" > /dev/null
+then
+  alias vim=$(which nvim)
+fi
+
+# vim: ft=zsh
