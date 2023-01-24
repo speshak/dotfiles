@@ -7,3 +7,11 @@ vim -c ":PluginInstall" -c ":qa"
 
 # Install the CoC libaries
 vim -c ":call coc#util#install()"
+
+vim \
+  -c ":CocInstall coc-json" \
+  -c ":CocInstall coc-python" \
+  -c ":CocInstall coc-pyright" \
+  -c ":CocInstall coc-sh" \
+  -c ":CocInstall coc-clangd" \
+  -c ":qa"
