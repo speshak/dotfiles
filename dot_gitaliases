@@ -5,7 +5,7 @@
   up = pull --rebase --autostash
   please = push --force-with-lease
   squash = commit --squash=HEAD
-  fixup = commit --fixup=HEAD
+  fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
   stsh = stash --keep-index
   staash = stash --include-untracked
   staaash = stash --all
