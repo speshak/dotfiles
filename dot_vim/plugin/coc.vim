@@ -18,6 +18,13 @@ endif
 " :h coc-completion-example
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
+
+"" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
 " remap for complete to use tab and <cr>
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1):
