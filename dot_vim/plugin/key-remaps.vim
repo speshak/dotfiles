@@ -10,6 +10,7 @@ inoremap kj <esc>
 nnoremap <F5> :UndotreeToggle<CR>
 map <F6> :NERDTreeToggle<CR>
 map <F7> :StripWhitespace<CR>
+map <F8> :SyntasticToggleMode<CR>
 
 " Make Ctl-L reset syntax highlighting
 nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
