@@ -1,5 +1,6 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
+lua require('plugins')
 
 " Language providers
 let g:python3_host_prog = '~/.pyenv/versions/py3nvim/bin/python'
