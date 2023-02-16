@@ -46,7 +46,11 @@ return require('packer').startup(function(use)
   use 'scrooloose/nerdtree'
   use 'ctrlpvim/ctrlp.vim'
   use 'bling/vim-airline'
-  use 'lewis6991/gitsigns.nvim'
+  use {'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
   use 'ryanoasis/vim-devicons'
   use 'rhysd/git-messenger.vim'
   use 'rhysd/committia.vim'

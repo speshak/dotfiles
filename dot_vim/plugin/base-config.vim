@@ -66,13 +66,13 @@ let g:airline_powerline_fonts = 1
 "set guifont=DroidSansMono_Nerd_Font_Mono:h11
 set guifont=Sauce_Code_Pro_ExtraLight_Nerd_Font_Complete:h12
 
+" A mode for copying directly from the terminal. Removes decoration.
 function CopyMode()
   set nonu
   :SyntasticToggleMode
-  :GitGutterToggle
 endfunction
+map cp <Esc>:call CopyMode()<CR>
 
 " Use , as <Leader> instead of \
 let mapleader = ","
 
-map cp <Esc>:call CopyMode()<CR>
