@@ -3,7 +3,7 @@ let g:licenses_default_commands = ['gpl', 'mit']
 let g:licenses_authors_name = 'Scott Peshak <{{ .email }}>'
 
 {{- if eq .environment "work" }}
-let g:licenses_copyright_holders_name = 'Dotdash Meredith'
+let g:licenses_copyright_holders_name = '{{ .employer }}'
 {{- else }}
 let g:licenses_copyright_holders_name = 'Scott Peshak <{{ .email }}>'
 {{- end }}

@@ -9,4 +9,6 @@ let g:python3_host_prog = '~/.pyenv/versions/py3nvim/bin/python'
 let g:loaded_perl_provider = 0
 let g:loaded_ruby_provider = 0
 
+lua require("settings")
+
 source ~/.vimrc

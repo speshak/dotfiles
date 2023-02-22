@@ -39,13 +39,23 @@ return require('packer').startup(function(use)
   use 'folke/todo-comments.nvim'
 
   -- Lang Server
-  -- COC Extensions are installed using run_once_vim.sh, add them there.
-  use {'neoclide/coc.nvim', branch = 'release'}
+  use {'neoclide/coc.nvim',
+    requires = {'vim-airline/vim-airline'},
+    config = function()
+      require("coc")
+    end,
+    branch = 'release'}
+
+  use {'vim-syntastic/syntastic',
+    config = function()
+      require("syntastic")
+    end
+  }
 
   -- User Interface
   use 'scrooloose/nerdtree'
   use 'ctrlpvim/ctrlp.vim'
-  use 'bling/vim-airline'
+  use 'vim-airline/vim-airline'
   use {'lewis6991/gitsigns.nvim',
     config = function()
       require('gitsigns').setup()
@@ -60,7 +70,6 @@ return require('packer').startup(function(use)
   use 'honza/vim-snippets'
 
   -- Python
-  use 'vim-syntastic/syntastic'
   use 'majutsushi/tagbar'
   use 'psf/black'
 
@@ -71,6 +80,18 @@ return require('packer').startup(function(use)
 
   -- Dev Ops stuff
   use 'digitalrounin/vim-yaml-folds'
+  use {'hashivim/vim-terraform',
+    config = function()
+      vim.cmd([[silent! autocmd! filetypedetect BufRead,BufNewFile *.tf]])
+      vim.cmd([[autocmd BufRead,BufNewFile *.hcl set filetype=hcl]])
+      vim.cmd([[autocmd BufRead,BufNewFile .terraformrc,terraform.rc set filetype=hcl]])
+      vim.cmd([[autocmd BufRead,BufNewFile *.tf,*.tfvars set filetype=terraform]])
+      vim.cmd([[autocmd BufRead,BufNewFile *.tfstate,*.tfstate.backup set filetype=json]])
+
+      vim.cmd([[let g:terraform_fmt_on_save=1]])
+      vim.cmd([[let g:terraform_align=1]])
+    end
+  }
   use 'juliosueiras/vim-terraform-completion'
   use 'speshak/vim-cfn'
   use 'hashicorp/sentinel.vim'

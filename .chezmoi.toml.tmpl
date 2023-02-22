@@ -6,3 +6,11 @@
   email = "scott@peshak.net"
   gpgkey = "9416115F"
   {{ end }}
+
+  {{ if eq $environment "work" }}
+  {{- $employer := promptString "Employer Name" -}}
+  employer = "{{ $employer }}"
+  {{- $email := promptString "Email Address" -}}
+  email = "{{ $email }}"
+  gpgkey = "8CFAAD66552565F2"
+  {{ end }}
