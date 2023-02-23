@@ -61,6 +61,12 @@ return require('packer').startup(function(use)
       require('gitsigns').setup()
     end
   }
+
+  -- Speed up loading/set custom filetypes
+  -- See https://github.com/nathom/filetype.nvim#customization for info on
+  -- setting custom types
+  use 'nathom/filetype.nvim'
+
   use 'ryanoasis/vim-devicons'
   use 'rhysd/git-messenger.vim'
   use 'rhysd/committia.vim'
