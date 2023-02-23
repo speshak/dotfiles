@@ -35,7 +35,6 @@ g.coc_global_extensions = {
    'coc-lua',
    'coc-marketplace',
    'coc-prettier',
-   'coc-project',
    'coc-pyright',
    'coc-react-refactor',
    'coc-rls',
