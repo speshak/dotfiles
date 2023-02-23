@@ -19,7 +19,6 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- General plugins
-  use 'ervandew/supertab'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'
   use 'cohama/lexima.vim'
@@ -68,11 +67,9 @@ return require('packer').startup(function(use)
   use 'nathom/filetype.nvim'
 
   use 'ryanoasis/vim-devicons'
-  use 'rhysd/git-messenger.vim'
   use 'rhysd/committia.vim'
 
   use 'pgilad/vim-skeletons'
-  use 'SirVer/ultisnips'
   use 'honza/vim-snippets'
 
   -- Python
@@ -104,6 +101,9 @@ return require('packer').startup(function(use)
 
   use 'ynkdir/vim-vimlparser'
   use 'syngan/vim-vimlint'
+
+  -- Optimiser
+  use("lewis6991/impatient.nvim")
 
   if packer_bootstrap then
     require('packer').sync()
