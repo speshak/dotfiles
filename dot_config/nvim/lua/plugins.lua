@@ -33,7 +33,13 @@ return require('packer').startup(function(use)
   use 'tpope/vim-commentary'
   use 'tpope/vim-speeddating'
   use 'AndrewRadev/splitjoin.vim'
-  use 'dkarter/bullets.vim'
+  use {'dkarter/bullets.vim',
+    config = function()
+      vim.g.bullets_enabled_file_types = {
+        'markdown', 'text', 'gitcommit', 'scratch'
+      }
+    end
+  }
   use 'antoyo/vim-licenses'
   use 'folke/todo-comments.nvim'
 
@@ -69,8 +75,13 @@ return require('packer').startup(function(use)
   use 'ryanoasis/vim-devicons'
   use 'rhysd/committia.vim'
 
-  use 'pgilad/vim-skeletons'
-  use 'honza/vim-snippets'
+  -- Skeletons and snippets
+  use {'pgilad/vim-skeletons',
+    requires = {'SirVer/ultisnips'}
+  }
+  use {'SirVer/ultisnips',
+    requires = {'honza/vim-snippets'}
+  }
 
   -- Python
   use 'majutsushi/tagbar'
@@ -103,7 +114,7 @@ return require('packer').startup(function(use)
   use 'syngan/vim-vimlint'
 
   -- Optimiser
-  use("lewis6991/impatient.nvim")
+  use "lewis6991/impatient.nvim"
 
   if packer_bootstrap then
     require('packer').sync()
