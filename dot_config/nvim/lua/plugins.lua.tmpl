@@ -102,6 +102,10 @@ return require('packer').startup(function(use)
     requires = {'honza/vim-snippets'}
   }
 
+  {{- if ne .environment "work" }}
+  use {'github/copilot.vim'}
+  {{- end }}
+
   -- Python
   use 'majutsushi/tagbar'
   use 'psf/black'
@@ -139,3 +143,5 @@ return require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
+
+# vim:ft=lua
