@@ -23,7 +23,15 @@ return require('packer').startup(function(use)
   use 'tpope/vim-surround'
   use 'cohama/lexima.vim'
   use 'ntpeters/vim-better-whitespace'
-  use 'nathanaelkane/vim-indent-guides'
+  use {'nathanaelkane/vim-indent-guides',
+    config = function()
+      vim.g.indent_guides_start_level = 2
+      vim.cmd([[
+        hi IndentGuidesOdd  ctermbg=black
+        hi IndentGuidesEven ctermbg=darkgrey
+      ]])
+    end
+  }
   use 'ConradIrwin/vim-bracketed-paste'
   use 'xolox/vim-misc'
   use 'xolox/vim-notes'
@@ -60,7 +68,11 @@ return require('packer').startup(function(use)
   -- User Interface
   use 'scrooloose/nerdtree'
   use 'ctrlpvim/ctrlp.vim'
-  use 'vim-airline/vim-airline'
+  use {'vim-airline/vim-airline',
+    config = function()
+      vim.g.airline_powerline_fonts = 1
+    end
+  }
   use {'lewis6991/gitsigns.nvim',
     config = function()
       require('gitsigns').setup()
@@ -77,7 +89,10 @@ return require('packer').startup(function(use)
 
   -- Skeletons and snippets
   use {'pgilad/vim-skeletons',
-    requires = {'SirVer/ultisnips'}
+    requires = {'SirVer/ultisnips'},
+    config = function()
+      vim.cmd("let skeletons#autoRegister = 1")
+    end
   }
   use {'SirVer/ultisnips',
     requires = {'honza/vim-snippets'}
@@ -102,8 +117,8 @@ return require('packer').startup(function(use)
       vim.cmd([[autocmd BufRead,BufNewFile *.tf,*.tfvars set filetype=terraform]])
       vim.cmd([[autocmd BufRead,BufNewFile *.tfstate,*.tfstate.backup set filetype=json]])
 
-      vim.cmd([[let g:terraform_fmt_on_save=1]])
-      vim.cmd([[let g:terraform_align=1]])
+      vim.g.terraform_fmt_on_save = 1
+      vim.g.terraform_align = 1
     end
   }
   use 'juliosueiras/vim-terraform-completion'

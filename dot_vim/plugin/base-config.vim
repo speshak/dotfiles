@@ -33,18 +33,6 @@ if v:version >= 700
   map nsp <Esc>:set nospell<CR>
 endif
 
-
-" Indent guides
-let g:indent_guides_start_level = 2
-hi IndentGuidesOdd  ctermbg=black
-hi IndentGuidesEven ctermbg=darkgrey
-
-
-" Skeletons!
-let skeletons#autoRegister = 1
-let skeletons#skeletonsDir = '~/.vim/skeletons'
-
-
 " Undo Config
 if has('persistent_undo')
     set undodir=~/.undodir/
@@ -61,11 +49,6 @@ if $VIM_CRONTAB ==? 'true'
     set nowritebackup
 endif
 
-" Font configuration
-let g:airline_powerline_fonts = 1
-"set guifont=DroidSansMono_Nerd_Font_Mono:h11
-set guifont=Sauce_Code_Pro_ExtraLight_Nerd_Font_Complete:h12
-
 " A mode for copying directly from the terminal. Removes decoration.
 function CopyMode()
   set nonu
@@ -74,5 +57,4 @@ endfunction
 map cp <Esc>:call CopyMode()<CR>
 
 " Use , as <Leader> instead of \
-let mapleader = ","
-
+let g:mapleader = ','

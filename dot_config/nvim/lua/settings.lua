@@ -16,3 +16,6 @@ cmd([[
    set completeopt=menu
    filetype on
 ]])
+
+-- Configure fonts
+g.guifont = "Sauce_Code_Pro_ExtraLight_Nerd_Font_Complete:h12"
