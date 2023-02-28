@@ -75,7 +75,11 @@ return require('packer').startup(function(use)
   }
   use {'lewis6991/gitsigns.nvim',
     config = function()
-      require('gitsigns').setup()
+      require('gitsigns').setup {
+        attach_to_untracked = false,
+        numhl = true,
+        signcolumn = false
+      }
     end
   }
 

@@ -27,7 +27,6 @@ g.coc_global_extensions = {
    'coc-docker',
    'coc-eslint',
    'coc-flutter',
-   'coc-git',
    'coc-highlight',
    'coc-html',
    'coc-json',
