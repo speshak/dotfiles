@@ -23,8 +23,6 @@ let g:explDetailedList=1
 " Taglist stuff
 filetype on
 
-set printoptions=paper:Letter
-
 " Spelling (didn't exist before vim 7.0)
 if v:version >= 700
   set spelllang=en
