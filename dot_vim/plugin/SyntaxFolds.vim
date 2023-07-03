@@ -1,3 +1,4 @@
+" vint: -ProhibitUsingUndeclaredVariable
 " ==============================================================================
 "        File: syntaxFolds.vim
 "      Author: Srinath Avadhanula
@@ -277,7 +278,7 @@ endfunction
 " }}}
 " MySearch: just like search(), but returns large number on failure {{{
 function! <SID>MySearch(pat, opt)
-	if a:opt == 'in'
+	if a:opt ==? 'in'
 		if getline('.') =~ a:pat
 			let ret = line('.')
 		else
