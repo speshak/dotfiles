@@ -1,2 +1,0 @@
-" gitgutter configuration
-GitGutterEnable
