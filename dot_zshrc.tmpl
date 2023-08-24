@@ -14,6 +14,13 @@ ZSH_THEME="gentoo"
 plugins=(git ruby tmux screen aws docker httpie safe-paste)
 {{ end }}
 
+# If we've got brew installed, get the brew completion scripts loaded before
+# oh-my-zsh. https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 # ssh
