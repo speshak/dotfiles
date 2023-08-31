@@ -1,29 +1,26 @@
--- Bootstrap installing packer
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+-- Bootstrap
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
-
-local packer_bootstrap = ensure_packer()
-
+vim.opt.rtp:prepend(lazypath)
 
 -- Configure packer
-return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+return require('lazy').setup({
 
   -- General plugins
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-surround'
-  use 'cohama/lexima.vim'
-  use 'ntpeters/vim-better-whitespace'
-  use {'nathanaelkane/vim-indent-guides',
+  'tpope/vim-fugitive',
+  'tpope/vim-surround',
+  'cohama/lexima.vim',
+  'ntpeters/vim-better-whitespace',
+  {'nathanaelkane/vim-indent-guides',
     config = function()
       vim.g.indent_guides_start_level = 2
       vim.cmd([[
@@ -31,94 +28,120 @@ return require('packer').startup(function(use)
         hi IndentGuidesEven ctermbg=darkgrey
       ]])
     end
-  }
-  use 'ConradIrwin/vim-bracketed-paste'
-  use 'xolox/vim-misc'
-  use 'xolox/vim-notes'
-  use 'sheerun/vim-polyglot'
-  use 'mbbill/undotree'
-  use 'machakann/vim-highlightedyank'
-  use 'tpope/vim-commentary'
-  use 'tpope/vim-speeddating'
-  use 'AndrewRadev/splitjoin.vim'
-  use {'dkarter/bullets.vim',
+  },
+
+  'ConradIrwin/vim-bracketed-paste',
+  'sheerun/vim-polyglot',
+  'mbbill/undotree',
+  'machakann/vim-highlightedyank',
+  'tpope/vim-commentary',
+  'tpope/vim-speeddating',
+  'AndrewRadev/splitjoin.vim',
+
+  {'dkarter/bullets.vim',
     config = function()
       vim.g.bullets_enabled_file_types = {
         'markdown', 'text', 'gitcommit', 'scratch'
       }
     end
-  }
-  use 'antoyo/vim-licenses'
-  use 'folke/todo-comments.nvim'
+  },
+  'antoyo/vim-licenses',
+  'folke/todo-comments.nvim',
 
   -- Lang Server
-  use {'neoclide/coc.nvim',
-    requires = {'vim-airline/vim-airline'},
-    config = function()
+  {'neoclide/coc.nvim',
+    dependencies = {'vim-airline/vim-airline'},
+    config = function(plugin)
       require("coc")
     end,
-    branch = 'release'}
+    branch = 'release'
+  },
 
-  use {'vim-syntastic/syntastic',
-    config = function()
+  {'vim-syntastic/syntastic',
+    config = function(plugin)
       require("syntastic")
     end
-  }
+  },
 
   -- User Interface
-  use 'scrooloose/nerdtree'
-  use 'ctrlpvim/ctrlp.vim'
-  use {'vim-airline/vim-airline',
-    config = function()
+  'scrooloose/nerdtree',
+  'ctrlpvim/ctrlp.vim',
+  {'vim-airline/vim-airline',
+    config = function(plugin)
       vim.g.airline_powerline_fonts = 1
     end
-  }
-  use {'lewis6991/gitsigns.nvim',
-    config = function()
+  },
+  {'lewis6991/gitsigns.nvim',
+    config = function(plugin)
       require('gitsigns').setup {
         attach_to_untracked = false,
         numhl = true,
-        signcolumn = false
+        signcolumn = false,
+        diff_opts = {
+          internal = true,
+          linematch = 2,
+        },
+        on_attach = function(buffer)
+          local gs = package.loaded.gitsigns
+
+          local function map(mode, l, r, desc)
+            vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+          end
+
+          -- stylua: ignore start
+          map("n", "]h", gs.next_hunk, "Next Hunk")
+          map("n", "[h", gs.prev_hunk, "Prev Hunk")
+          map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+          map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+          map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
+          map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
+          map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
+          map("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
+          map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
+          map("n", "<leader>ghd", gs.diffthis, "Diff This")
+          map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
+          map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+        end,
       }
     end
-  }
+  },
 
   -- Speed up loading/set custom filetypes
   -- See https://github.com/nathom/filetype.nvim#customization for info on
   -- setting custom types
-  use 'nathom/filetype.nvim'
+  'nathom/filetype.nvim',
 
-  use 'ryanoasis/vim-devicons'
-  use 'rhysd/committia.vim'
+  'ryanoasis/vim-devicons',
+  'rhysd/committia.vim',
 
   -- Skeletons and snippets
-  use {'pgilad/vim-skeletons',
-    requires = {'SirVer/ultisnips'},
-    config = function()
+  {'pgilad/vim-skeletons',
+    dependencies = {'SirVer/ultisnips'},
+    config = function(plugin)
       vim.cmd("let skeletons#autoRegister = 1")
     end
-  }
-  use {'SirVer/ultisnips',
-    requires = {'honza/vim-snippets'}
-  }
+  },
+  {'SirVer/ultisnips',
+    dependencies = {'honza/vim-snippets'}
+  },
 
   {{- if ne .environment "work" }}
-  use {'github/copilot.vim'}
+  'github/copilot.vim',
   {{- end }}
 
   -- Python
-  use 'majutsushi/tagbar'
-  use 'psf/black'
+  'majutsushi/tagbar',
+  'psf/black',
 
   -- (Java|Type)Script
-  use 'Quramy/tsuquyomi'
-  use 'Quramy/vim-js-pretty-template'
-  use 'leafgarland/typescript-vim'
+  'Quramy/tsuquyomi',
+  'Quramy/vim-js-pretty-template',
+  'leafgarland/typescript-vim',
 
   -- Dev Ops stuff
-  use 'digitalrounin/vim-yaml-folds'
-  use {'hashivim/vim-terraform',
-    config = function()
+  'digitalrounin/vim-yaml-folds',
+  {'hashivim/vim-terraform',
+    config = function(plugin)
       vim.cmd([[silent! autocmd! filetypedetect BufRead,BufNewFile *.tf]])
       vim.cmd([[autocmd BufRead,BufNewFile *.hcl set filetype=hcl]])
       vim.cmd([[autocmd BufRead,BufNewFile .terraformrc,terraform.rc set filetype=hcl]])
@@ -128,20 +151,16 @@ return require('packer').startup(function(use)
       vim.g.terraform_fmt_on_save = 1
       vim.g.terraform_align = 1
     end
-  }
-  use 'juliosueiras/vim-terraform-completion'
-  use 'speshak/vim-cfn'
-  use 'hashicorp/sentinel.vim'
+  },
+  'juliosueiras/vim-terraform-completion',
+  'speshak/vim-cfn',
+  'hashicorp/sentinel.vim',
 
-  use 'ynkdir/vim-vimlparser'
-  use 'syngan/vim-vimlint'
+  'ynkdir/vim-vimlparser',
+  'syngan/vim-vimlint',
 
   -- Optimiser
-  use "lewis6991/impatient.nvim"
-
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+  "lewis6991/impatient.nvim",
+})
 
 -- vim:ft=lua

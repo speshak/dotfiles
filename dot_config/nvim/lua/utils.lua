@@ -54,10 +54,6 @@ M.define_augroups({
 		-- will cause split windows to be resized evenly if main window is resized
 		{ "VimResized", "*", "wincmd =" },
 	},
-	_packer_compile = {
-		-- will cause split windows to be resized evenly if main window is resized
-		{ "BufWritePost", "plugins.lua", "PackerCompile" },
-	},
 	_qf = {
 		-- will cause split windows to be resized evenly if main window is resized
 		{ "FileType", "qf", "set nobuflisted" },
