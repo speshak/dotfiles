@@ -8,6 +8,10 @@ HashKnownHosts yes
 
 Include conf.d/*
 
+Host github.com
+    Hostname ssh.github.com
+    Port 443
+    User git
 
 # SSH over Session Manager
 host i-* mi-*
