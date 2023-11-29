@@ -10,3 +10,4 @@
   staash = stash --include-untracked
   stsh = stash --keep-index
   up = pull --rebase --autostash
+  rom = rebase origin/main
