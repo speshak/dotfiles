@@ -1,0 +1,58 @@
+-- Programming specific plugins
+return {
+  -- Skeletons and snippets
+  {'pgilad/vim-skeletons',
+    dependencies = {'SirVer/ultisnips'},
+    config = function(plugin)
+      vim.cmd("let skeletons#autoRegister = 1")
+    end
+  },
+  {'SirVer/ultisnips',
+    dependencies = {'honza/vim-snippets'}
+  },
+
+  'github/copilot.vim',
+
+  -- Python
+  'majutsushi/tagbar',
+  'psf/black',
+
+  -- (Java|Type)Script
+  'Quramy/tsuquyomi',
+  'Quramy/vim-js-pretty-template',
+  'leafgarland/typescript-vim',
+
+  -- Dev Ops stuff
+  'digitalrounin/vim-yaml-folds',
+  {'hashivim/vim-terraform',
+    config = function(plugin)
+      vim.cmd([[silent! autocmd! filetypedetect BufRead,BufNewFile *.tf]])
+      vim.cmd([[autocmd BufRead,BufNewFile *.hcl set filetype=hcl]])
+      vim.cmd([[autocmd BufRead,BufNewFile .terraformrc,terraform.rc set filetype=hcl]])
+      vim.cmd([[autocmd BufRead,BufNewFile *.tf,*.tfvars set filetype=terraform]])
+      vim.cmd([[autocmd BufRead,BufNewFile *.tfstate,*.tfstate.backup set filetype=json]])
+
+      vim.g.terraform_fmt_on_save = 1
+      vim.g.terraform_align = 1
+    end
+  },
+  'juliosueiras/vim-terraform-completion',
+  'speshak/vim-cfn',
+  'hashicorp/sentinel.vim',
+
+  'ynkdir/vim-vimlparser',
+  'syngan/vim-vimlint',
+
+  -- Speed up loading/set custom filetypes
+  -- See https://github.com/nathom/filetype.nvim#customization for info on
+  -- setting custom types
+  'nathom/filetype.nvim',
+
+  'ryanoasis/vim-devicons',
+  'rhysd/committia.vim',
+
+  -- Optimiser
+  "lewis6991/impatient.nvim",
+}
+
+-- vim:ft=lua
