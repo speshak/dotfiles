@@ -68,7 +68,7 @@
   check = true
 
 [diff "spaceman-diff"]
-  command = {{ findExecutable "spaceman-diff" list("/usr/local/bin/" "/opt/homebrew/bin") }}
+  command = {{ findExecutable "spaceman-diff" (list "/usr/local/bin/" "/opt/homebrew/bin") }}
   indentHeuristic = on
 
 # diff-so-fancy recommended defaults

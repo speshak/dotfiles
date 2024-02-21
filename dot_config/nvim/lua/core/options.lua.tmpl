@@ -1,6 +1,18 @@
-local cmd = vim.cmd
+local opt = vim.opt
 local g = vim.g
 
+-- Language providers
+g.python3_host_prog = '~/.pyenv/versions/py3nvim/bin/python'
+-- Disable these so they don't show up in :checkhealth
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0
+
+-- Configure fonts
+g.guifont = "Sauce_Code_Pro_ExtraLight_Nerd_Font_Complete:h12"
+
+
+-- TODO: refactor this into Lua
+local cmd = vim.cmd
 cmd([[
    set fo=tcqln scs sm tm=200 bs=2 ai bg=dark title
    set ignorecase nohlsearch number showcmd
@@ -16,6 +28,4 @@ cmd([[
    set completeopt=menu
    filetype on
 ]])
-
--- Configure fonts
-g.guifont = "Sauce_Code_Pro_ExtraLight_Nerd_Font_Complete:h12"
+-- vim:ft=lua
