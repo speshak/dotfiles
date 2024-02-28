@@ -4,7 +4,7 @@ local function safe_require(module)
   if success then
     return loaded_module
   end
-  vim.cmd.echo('Error loading ' .. module)
+  vim.print('Error loading ' .. module)
 end
 
 safe_require('core.options')
