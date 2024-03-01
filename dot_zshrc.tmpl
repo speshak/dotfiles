@@ -74,9 +74,9 @@ unset config_files
 export PATH=${HOME}/bin:${PATH}
 
 {{ if eq .chezmoi.os "darwin" -}}
-if [ -e {{ output "brew" "--prefix" }}/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh ]
+if [ -e {{ output "brew" "--prefix" | trim }}/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh ]
 then
-  source {{ output "brew" "--prefix" }}/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
+  source {{ output "brew" "--prefix" | trim }}/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
 fi
 
 if [ -e "${HOME}/.iterm2_shell_integration.zsh" ]
