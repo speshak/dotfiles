@@ -1,2 +1,26 @@
+-- Define local variables
+local autocmd = vim.api.nvim_create_autocmd
+local function augroup(name)
+  return vim.api.nvim_create_augroup(name, { clear = true })
+end
+
+-- Highlight text on yank
+autocmd('TextYankPost', {
+  group = augroup('highlight_yank'),
+  callback = function()
+    vim.highlight.on_yank({ higroup = 'IncSearch', timeout = '700' })
+  end,
+})
+
+
+-- Add extra switch toggle values for gitrebase
+autocmd('FileType', {
+  group = augroup('gitrebase'),
+  callback = function()
+     vim.g.switch_custom_definitions = {
+       { 'pick', 'fixup', 'reword', 'edit', 'squash' }
+     }
+  end,
+})
 
 -- vim:ft=lua
