@@ -2,7 +2,11 @@
 -- language
 return {
   -- User interface
-  'scrooloose/nerdtree',
+  {'scrooloose/nerdtree',
+    config = function()
+      vim.keymap.set({'n', 'v', 'i'}, '<F6>', ':NERDTreeToggle<CR>')
+    end
+  },
   'ctrlpvim/ctrlp.vim',
   {'vim-airline/vim-airline',
     config = function(plugin)
@@ -13,7 +17,11 @@ return {
   'tpope/vim-fugitive',
   'tpope/vim-surround',
   'cohama/lexima.vim',
-  'ntpeters/vim-better-whitespace',
+  {'ntpeters/vim-better-whitespace',
+    config = function()
+      vim.keymap.set({'n', 'v', 'i'}, '<F7>', ':StripWhitespace<CR>')
+    end
+  },
   {'nathanaelkane/vim-indent-guides',
     config = function()
       vim.g.indent_guides_start_level = 2

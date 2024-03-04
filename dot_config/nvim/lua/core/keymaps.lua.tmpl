@@ -1,4 +1,12 @@
-local cmd = vim.cmd
-local g = vim.g
+local map = vim.keymap.set
+
+-- Set space as my leader key
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+-- Better indenting
+-- (Don't lose the selection after indenting)
+map('v', '<', '<gv')
+map('v', '>', '>gv')
 
 -- vim:ft=lua
