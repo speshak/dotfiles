@@ -23,4 +23,14 @@ autocmd('FileType', {
   end,
 })
 
--- vim:ft=lua
+-- Use tab chars in Makefiles
+autocmd('FileType', {
+  group = augroup('make'),
+  callback = function()
+    vim.opt.expandtab = false
+    vim.opt.shiftwidth = 8
+    vim.opt.softtabstop = 0
+  end,
+})
+
+-- vim: ft=lua
