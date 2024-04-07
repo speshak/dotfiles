@@ -5,6 +5,7 @@ local function safe_require(module)
     return loaded_module
   end
   vim.print('Error loading ' .. module)
+  vim.notify(loaded_module, vim.log.levels.ERROR)
 end
 
 safe_require('core.options')
