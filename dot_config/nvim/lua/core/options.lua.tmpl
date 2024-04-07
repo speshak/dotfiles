@@ -11,21 +11,29 @@ g.loaded_ruby_provider = 0
 g.guifont = "Sauce_Code_Pro_ExtraLight_Nerd_Font_Complete:h12"
 
 
--- TODO: refactor this into Lua
-local cmd = vim.cmd
-cmd([[
-   set fo=tcqln scs sm tm=200 bs=2 ai bg=dark title
-   set ignorecase nohlsearch number showcmd
-   syntax on
-   set sessionoptions-=options
-   set encoding=utf-8
-   set termencoding=utf-8
-   set shortmess=filnxtToO
-   set tabstop=2 shiftwidth=2 expandtab
-   set laststatus=2
-   set autochdir
-   set statusline=%f(%l:%c)%y%m
-   set completeopt=menu
-   filetype on
-]])
+-- Set various options
+vim.opt.autochdir = true
+vim.opt.autoindent = true
+vim.opt.background = 'dark'
+vim.opt.backspace = 'indent,eol,start'
+vim.opt.completeopt = 'menu'
+vim.opt.encoding = 'utf-8'
+vim.opt.expandtab = true
+vim.opt.formatoptions = 'tcqln'
+vim.opt.hlsearch = false
+vim.opt.ignorecase = true
+vim.opt.laststatus = 2
+vim.opt.number = true
+vim.opt.sessionoptions:remove('options')
+vim.opt.shiftwidth = 2
+vim.opt.shortmess = 'filnxtToO'
+vim.opt.showcmd = true
+vim.opt.showmatch = true
+vim.opt.smartcase = true
+vim.opt.statusline = '%f(%l:%c)%y%m'
+vim.opt.tabstop = 2
+vim.opt.termencoding = 'utf-8'
+vim.opt.timeoutlen = 200
+vim.opt.title = true
+
 -- vim:ft=lua
