@@ -25,7 +25,7 @@ autocmd('FileType', {
 
 -- Use tab chars in Makefiles
 autocmd('FileType', {
-  group = augroup('make'),
+  pattern = { 'Makefile' },
   callback = function()
     vim.opt.expandtab = false
     vim.opt.shiftwidth = 8
