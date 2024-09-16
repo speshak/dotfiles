@@ -9,8 +9,10 @@
 
   {{ if eq $environment "work" }}
   {{- $employer := promptString "Employer Name" -}}
-  employer = "{{ $employer }}"
   {{- $email := promptString "Email Address" -}}
+  {{- $key := promptString "GPG Key ID" -}}
+
+  employer = "{{ $employer }}"
   email = "{{ $email }}"
-  gpgkey = "8CFAAD66552565F2"
+  gpgkey = "{{ $key }}"
   {{ end }}
