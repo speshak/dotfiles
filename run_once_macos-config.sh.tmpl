@@ -3,8 +3,12 @@
 {{ if eq .chezmoi.os "darwin" -}}
 # Set various macos knobs
 
+{{ if eq .environment "home" }}
 printf "%s\n" "System - Avoid creating .DS_Store files on network volumes."
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+# shellcheck disable=SC1009,SC1072,SC1073,SC1056
+{{ end -}}
 
 # shellcheck disable=SC1009,SC1072,SC1073,SC1056
 {{ end -}}
