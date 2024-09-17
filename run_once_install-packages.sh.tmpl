@@ -15,7 +15,6 @@ brew install \
   diff-so-fancy \
   flake8 \
   fzf \
-  gcal \
   gh \
   git \
   git-flow \
@@ -36,6 +35,7 @@ brew install \
   mypy \
   nmap \
   node \
+  nvim \
   openssl \
   pinentry-mac \
   postgresql \
@@ -60,14 +60,21 @@ brew install \
   wget \
   xz \
   yarn \
-  youtube-dl \
   zsh \
   zsh-navigation-tools
 # shellcheck disable=SC1009,SC1072,SC1073,SC1056
+
+{{ if eq .environment "home" }}
+brew install \
+  yt-dlp
 {{ end -}}
 
 
-# Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended || true
+{{ if eq .environment "work" }}
+brew install \
+  okta-aws-cli
+{{ end -}}
+
+{{ end -}}
 
 # vim:ft=jinja2.sh
