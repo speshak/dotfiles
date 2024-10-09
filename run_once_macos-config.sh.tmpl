@@ -2,6 +2,8 @@
 # shellcheck disable=SC1054,SC1083
 {{ if eq .chezmoi.os "darwin" -}}
 # Set various macos knobs
+# Disable "hold to suggest accented char"
+defaults write -g ApplePressAndHoldEnabled -bool false
 
 {{ if eq .environment "home" }}
 printf "%s\n" "System - Avoid creating .DS_Store files on network volumes."
