@@ -17,12 +17,14 @@ brew install \
   fzf \
   gh \
   git \
+  git-absorb \
   git-flow \
   git-lfs \
   gnupg \
   gping \
   grc \
   gron \
+  hadolint \
   hashicorp/tap/terraform-ls \
   htop \
   httpie \
@@ -60,6 +62,7 @@ brew install \
   wget \
   xz \
   yarn \
+  yq \
   zsh \
   zsh-navigation-tools
 # shellcheck disable=SC1009,SC1072,SC1073,SC1056
@@ -72,6 +75,8 @@ brew install \
 
 {{ if eq .environment "work" }}
 brew install \
+  colima \
+  just \
   okta-aws-cli
 {{ end -}}
 
