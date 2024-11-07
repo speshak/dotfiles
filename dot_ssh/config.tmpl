@@ -12,6 +12,11 @@ Host github.com
     Hostname ssh.github.com
     Port 443
     User git
+    # I was having connection issues with some workflows that open a large
+    # number of connections to github. Turning off multiplexing fixes that.
+    ControlMaster no
+    ControlPath none
+    ControlPersist no
 
 # SSH over Session Manager
 host i-* mi-*
@@ -25,3 +30,8 @@ Host *
   ControlPersist yes
   ControlPath ~/.ssh/control/%C
   AddKeysToAgent yes
+
+  {{ if eq .chezmoi.os "darwin" -}}
+	IdentityAgent /Users/speshak/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+  {{ end -}}
+# vim: ft=sshconfig
