@@ -1,6 +1,5 @@
 alias reload!='. ~/.zshrc'
 
-alias cal="gcal -q US_IA"
 alias http="http --verify=no"
 alias weather="curl wttr.in"
 
@@ -27,4 +26,11 @@ then
   alias vim=$(which nvim)
 fi
 
+# gcal isn't in homebrew anymore, so systems might not get it
+if type "gcal" > /dev/null
+then
+  alias cal="gcal -q US_IA"
+else
+  alias cal="cal -3"
+fi
 # vim: ft=zsh
