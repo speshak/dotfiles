@@ -31,7 +31,7 @@ Host *
   ControlPath ~/.ssh/control/%C
   AddKeysToAgent yes
 
-  {{ if eq .chezmoi.os "darwin" -}}
+  {{ if and (eq .chezmoi.os "darwin") (not (eq .environment "work")) -}}
 	IdentityAgent /Users/speshak/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
   {{ end -}}
 # vim: ft=sshconfig
