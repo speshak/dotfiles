@@ -35,7 +35,7 @@ end
 
 M.define_augroups({
 	_general_settings = {
-		{ "TextYankPost", "*", "lua require('vim.highlight').on_yank({higroup = 'Search', timeout = 200})" },
+		{ "TextYankPost", "*", "lua require('vim.hl').on_yank({higroup = 'Search', timeout = 200})" },
 		{ "BufWinEnter", "*", "setlocal formatoptions-=c formatoptions-=r formatoptions-=o" },
 		{ "BufRead", "*", "setlocal formatoptions-=c formatoptions-=r formatoptions-=o" },
 		{ "BufNewFile", "*", "setlocal formatoptions-=c formatoptions-=r formatoptions-=o" },
