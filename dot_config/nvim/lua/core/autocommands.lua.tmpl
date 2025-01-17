@@ -8,7 +8,11 @@ end
 autocmd('TextYankPost', {
   group = augroup('highlight_yank'),
   callback = function()
-    vim.hl.on_yank({ higroup = 'IncSearch', timeout = '700' })
+    if vim.fn.has('nvim-0.11') == 1 then
+      vim.hl.on_yank({ higroup = 'IncSearch', timeout = '700' })
+    else
+      vim.highlight.on_yank({ higroup = 'IncSearch', timeout = '700' })
+    end
   end,
 })
 
