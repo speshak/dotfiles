@@ -79,8 +79,13 @@ brew install \
 {{ if eq .environment "work" }}
 brew install \
   colima \
+  jsonnet \
+  jsonnet-bundler \
   just \
+  kubeconform \
   okta-aws-cli
+  scala \
+  tanka
 {{ end -}}
 
 {{ end -}}
