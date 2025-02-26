@@ -1,3 +1,9 @@
+[column]
+  ui = auto
+
+[branch]
+  sort = -committerdate
+
 [core]
   excludesfile = ~/.gitignore_global
 
@@ -26,6 +32,7 @@
 
 [commit]
   gpgsign = true
+  verbose = true
 
 [color]
   ui = true
@@ -47,6 +54,7 @@
 [tag]
   forceSignAnnotated = true
   gpgSign = true
+  sort = version:refname
 
 [help]
   autocorrect = 1
@@ -62,9 +70,12 @@
 
 [fetch]
   prune = true
+  pruneTags = true
 
 [rebase]
   autoSquash = true
+  autoStash = true
+  updateRefs = true
   instructionFormat = "%s (%an)"
 
 [git-up "bundler"]
