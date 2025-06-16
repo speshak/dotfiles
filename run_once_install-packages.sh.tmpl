@@ -1,8 +1,6 @@
 #!/bin/bash -e
 # shellcheck disable=SC1054,SC1083
 {{ if eq .chezmoi.os "darwin" -}}
-brew tap 'homebrew/bundle'
-
 brew install \
   awscli \
   bat \
@@ -84,7 +82,7 @@ brew install \
   jsonnet-bundler \
   just \
   kubeconform \
-  okta-aws-cli
+  okta-aws-cli \
   scala \
   tanka
 {{ end -}}
