@@ -41,7 +41,11 @@
   ui = true
 
 [gpg]
+{{- if eq .chezmoi.os "darwin" }}
+  program = /opt/homebrew/bin/gpg
+{{- else }}
   program = gpg
+{{- end }}
 
 [gpg "ssh"]
 	allowedSignersFile = ~/.config/git/allowed_signers
