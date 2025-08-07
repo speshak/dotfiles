@@ -16,3 +16,6 @@
   email = "{{ $email }}"
   gpgkey = "{{ $key }}"
   {{ end }}
+
+  # Feature flags
+  use_augment = {{ eq $environment "work" }}
