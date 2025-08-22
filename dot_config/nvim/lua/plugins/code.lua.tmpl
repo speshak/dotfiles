@@ -1,16 +1,5 @@
 -- Programming specific plugins
 return {
-  -- Skeletons and snippets
-  {'pgilad/vim-skeletons',
-    dependencies = {'SirVer/ultisnips'},
-    config = function(plugin)
-      vim.cmd("let skeletons#autoRegister = 1")
-    end
-  },
-  {'SirVer/ultisnips',
-    dependencies = {'honza/vim-snippets'}
-  },
-
   -- Python
   'majutsushi/tagbar',
   'psf/black',
