@@ -1,0 +1,16 @@
+return {
+  {'antoyo/vim-licenses',
+    config = function()
+      vim.g.licenses_default_commands = {'gpl', 'mit'}
+      vim.g.licenses_authors_name = 'Scott Peshak <{{ .email }}>'
+
+      {{- if eq .environment "work" }}
+      vim.g.licenses_copyright_holders_name = '{{ .employer }}'
+      {{- else }}
+      vim.g.licenses_copyright_holders_name = 'Scott Peshak <{{ .email }}>'
+      {{- end }}
+    end
+  },
+}
+
+-- vim:ft=lua
