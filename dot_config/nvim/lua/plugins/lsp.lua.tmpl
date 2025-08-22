@@ -1,3 +1,4 @@
+{{- if .use_coc }}
 return {
   {'neoclide/coc.nvim',
     dependencies = {'vim-airline/vim-airline'},
@@ -27,5 +28,7 @@ return {
   },
 
 }
-
+{{- else }}
+return {}
+{{- end }}
 -- vim:ft=lua
