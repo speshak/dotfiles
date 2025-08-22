@@ -8,6 +8,9 @@ local function safe_require(module)
   vim.notify(loaded_module, vim.log.levels.ERROR)
 end
 
+-- Optimize lua loading
+vim.loader.enable()
+
 safe_require('core.options')
 safe_require('core.keymaps')
 safe_require('core.autocommands')
