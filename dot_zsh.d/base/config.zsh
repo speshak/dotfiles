@@ -7,3 +7,5 @@ fi
 
 # Enable virtualenv
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+export BC_ENV_ARGS=~/.bc
