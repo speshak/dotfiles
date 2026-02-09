@@ -101,4 +101,7 @@ fi
 # Enable extended glob to allow ^ negation in shell globs
 setopt extendedglob
 
+# Install worktrunk completion if it's available
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+
 # vim:ft=zsh
