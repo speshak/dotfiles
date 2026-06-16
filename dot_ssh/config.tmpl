@@ -13,7 +13,9 @@ Include conf.d/*
 
 Host github.com
     Hostname ssh.github.com
+{{ if eq .environment "home" }}
     Port 443
+{{ end }}
     User git
     # I was having connection issues with some workflows that open a large
     # number of connections to github. Turning off multiplexing fixes that.
